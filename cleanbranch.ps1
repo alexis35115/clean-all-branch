@@ -3,7 +3,7 @@ foreach ($repertoire in $repertoires)
 {
     if (Test-Path -Path $("$repertoire"+"\.git")) {
 
-        Write-Host "Faire le ménage du référentiel $repertoire ↓" ;
+        Write-Host "Faire le ménage du référentiel $repertoire ↓" -ForegroundColor Green ;
 
         git -C $repertoire fetch --prune;
 
@@ -11,7 +11,7 @@ foreach ($repertoire in $repertoires)
 
         foreach ($branche in $branchesASupprimer) {
             
-            Write-Host "Supprimer la branche $branche dans du référentiel $repertoire ↓";
+            Write-Host "Supprimer la branche $branche dans du référentiel $repertoire ↓" -ForegroundColor Red;
             git -C $repertoire branch -d $branche.trim();
         }
     }
